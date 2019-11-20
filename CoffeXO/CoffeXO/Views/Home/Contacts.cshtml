@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Contacts";
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+
+<div class="all">
+    <h1 style="text-align:center" class="beautifullh">Контакты</h1>
+
+    <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+        <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div>
+        <script>
+            (function () {
+                var setting = { "height": 740, "width": 740, "zoom": 17, "queryString": "Лопасненская улица, 5, Чехов, Moscow Oblast, Россия", "place_id": "ChIJW5ly5zRCNUERH3e2LgU_wCw", "satellite": false, "centerCoord": [55.14684932280359, 37.45988609999995], "cid": "0x2cc03f052eb6771f", "cityUrl": "/russia/chekhov-51912", "id": "map-9cd199b9cc5410cd3b1ad21cab2e54d3", "embed_id": "115881" };
+                var d = document;
+                var s = d.createElement('script');
+                s.src = 'https://1map.com/js/script-for-user.js?embed_id=115881';
+                s.async = true;
+                s.onload = function (e) {
+                    window.OneMap.initMap(setting)
+                };
+                var to = d.getElementsByTagName('script')[0];
+                to.parentNode.insertBefore(s, to);
+            })();</script><a href="https://1map.com/map-embed?embed_id=115881">1map.com</a>
+    </div>
+
+    <div style="margin-top:20px">
+        <img style="width:30px" src="http://pngimg.com/uploads/phone/phone_PNG49052.png" /><b style="margin-left:5px">8000000000</b><a style="margin-left:20px; color:black" href="https://mail.google.com/mail/u/0/#inbox?compose=new"><img style="width:30px" src="https://image.flaticon.com/icons/png/512/9/9923.png" /><b style="margin-left:5px">coffexo&#64;gmail.com</b></a> 
+    </div>
+</div>
+
+
+<style>
+
+    .all{
+        height:auto;
+        background: indianred;
+        width:auto
+    }
+    .beautifullh {
+        background: indianred;
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+</style>
+

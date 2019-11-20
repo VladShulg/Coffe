@@ -1,0 +1,168 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "EditEvent";
+}
+
+<h1 class="text-shadow-1">Редактировать мероприятие</h1>
+<h1 class="text">Основное:</h1>
+<table>
+    <tr>
+        <th>Позиция</th>
+        <th>Заполнить</th>
+    </tr>
+    <tr>
+        <td>Имя</td>
+        <td><input id="name" value="@Model.Name"/></td>
+    </tr>
+    <tr>
+        <td>Адрес изображения</td>
+        <td><input id="imgsrc" value="@Model.ImgSrc"/></td>
+    </tr>
+    <tr>
+        <td>Информация</td>
+        <td><input id="info" value="@Model.Info"/></td>
+    </tr>
+</table>
+<h1 class="text">Расписание:</h1>
+<table>
+    <tr>
+        <th>Позиция</th>
+        <th>Заполнить</th>
+    </tr>
+    <tr>
+        <td>День</td>
+        <td><input id="day" value="@Model.Day"/></td>
+    </tr>
+    <tr>
+        <td>Время</td>
+        <td><input id="time" value="@Model.Time"/></td>
+    </tr>
+</table>
+
+
+<button onclick="Save()" style="margin-top:30px" class="btn btn-success">&#128449;Сохранить</button>
+<script>
+    function Save() {
+        var eventName = document.getElementById("name").value;
+        var eventImgSrc = document.getElementById("imgsrc").value;
+        var eventInfo = document.getElementById("info").value;
+        var eventDay = document.getElementById("day").value;
+        var eventTime = document.getElementById("time").value;
+        var data = {
+            Id: "@Model.Id",
+            Name: eventName,
+            ImgSrc: eventImgSrc,
+            Info: eventInfo,
+            Day: eventDay,
+            Time: eventTime
+        };
+        console.log(data);
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/EditEventApi",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: data,
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () { alert("Мероприятие отредактированно"); window.location.assign("/Home/Admin")},
+            failure: function() {
+                alert("Не удалось отредактировать мероприятие");
+            }
+        });
+    }
+</script>
+<style>
+    a.green {
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
+        color: #ffffff;
+        display: block;
+        width: 265px;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        padding: 8px 16px;
+        margin: 20px 0px;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: background-color 0.1s linear;
+        -moz-transition: background-color 0.1s linear;
+        -o-transition: background-color 0.1s linear;
+        transition: background-color 0.1s linear;
+    }
+
+    a.green {
+        background-color: rgb( 43, 153, 91 );
+        border: 1px solid rgb( 33, 126, 74 );
+    }
+
+        a.green:hover {
+            background-color: rgb( 75, 183, 141 );
+        }
+
+    table {
+        font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+        font-size: 14px;
+        border-radius: 10px;
+        border-spacing: 0;
+        text-align: center;
+    }
+
+    th {
+        background: #BCEBDD;
+        color: white;
+        text-shadow: 0 1px 1px #2D2020;
+        padding: 10px 20px;
+    }
+
+    th, td {
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+        border-color: white;
+    }
+
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+
+        th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 10px;
+            border-right: none;
+        }
+
+    td {
+        padding: 10px 20px;
+        background: #F8E391;
+    }
+
+    tr:last-child td:first-child {
+        border-radius: 0 0 0 10px;
+    }
+
+    tr:last-child td:last-child {
+        border-radius: 0 0 10px 0;
+    }
+
+    tr td:last-child {
+        border-right: none;
+    }
+
+    .text-shadow-1 {
+        background: powderblue;
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+
+    .text {
+        color: palegoldenrod;
+    }
+</style>
+

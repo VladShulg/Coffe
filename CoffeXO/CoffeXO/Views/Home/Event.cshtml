@@ -1,0 +1,47 @@
+﻿@model Event
+@{
+    ViewData["Title"] = $"{Model.Name}";
+}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </head>
+<body>
+    <div class="all">
+        <h1 class="text-shadow-1" style="text-align:center">@Model.Name</h1>
+        <div>
+            <img src="@Model.ImgSrc" class="rounded mx-auto d-block" style="width: auto;"/>
+        </div>
+        <p><b class="text">@Model.Info</b></p>
+        <h2>Расписание</h2>
+
+        <table class="table">
+            <tr class="table-danger">
+                <th>День недели</th>
+                <th>Время</th>
+            </tr>
+            <tr class="table-warning">
+                <td>@Model.Day</td>
+                <td>@Model.Time</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<style>
+    .all{
+        height: auto;
+        background: indianred;
+        width:1150px;
+    }
+    .text{font-size:22px;}
+    .text-shadow-1 {
+        background: indianred;
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+</style>

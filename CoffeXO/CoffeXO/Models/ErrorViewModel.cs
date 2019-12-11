@@ -1,5 +1,3 @@
-using System;
-
 namespace CoffeXO.Models
 {
     public class ErrorViewModel

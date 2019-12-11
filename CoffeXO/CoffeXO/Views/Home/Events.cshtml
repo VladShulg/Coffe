@@ -1,47 +1,44 @@
 ﻿@model List<Event>
 @{
-    ViewData["Title"] = "Мероприятия";
+    ViewData["Title"] = "Список мероприятий";
 }
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    </head>
-    <style>
-        .text-shadow-1 {
-            background: indianred;
-            color: wheat;
-            text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
-            letter-spacing: 0.1em;
-        }
-        .all{
-        height:auto;
-        background: indianred;
-        width:auto
-    }
-        
-        .button1 {
-    background-color: wheat;
-    color: black;
-    border: 2px solid #000000;
-    margin-left:auto;
-    margin-right:auto;
-    width:auto;
-    font-size:24px;
-}
-    </style>
-    <div class="all">
-        <h1 style="text-align:center" class="text-shadow-1">Список мероприятий</h1>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
 
-        @foreach (var e in Model)
-        {
-            <p style="text-align:center;"><button class="button1" onclick="window.location.assign('/Home/Event?id=@e.Id')">@e.Name</button></p>
-            
-        }
-    </div>
+<style>
+    .text-shadow-1 {
+        background: indianred;
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+
+    .all {
+        height: auto;
+        background: indianred;
+        width: auto
+    }
+</style>
+<div class="all">
+    <h1 style="text-align:center" class="text-shadow-1">Список мероприятий</h1>
+
+    @foreach (var e in Model)
+    {
+        <div class="card" style="width:350px; text-align:center; margin-top: 20px">
+            <img class="card-img-top" src="@e.ImgSrc" alt="Card image" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">@e.Name</h4>
+                <a href="/Home/Event?id=@e.Id" class="btn btn-primary stretched-link" style="background:wheat; color:black">Подробнее</a>
+            </div>
+        </div>
+    }
+</div>
 
 
 

@@ -13,8 +13,8 @@
 <body>
     <div class="all">
         <h1 class="text-shadow-1" style="text-align:center">@Model.Name</h1>
-        <div>
-            <img src="@Model.ImgSrc" class="rounded mx-auto d-block" style="width: auto;"/>
+        <div style="width:auto">
+            <img src="@Model.ImgSrc" class="img-thumbnail"/>
         </div>
         <p><b class="text">@Model.Info</b></p>
         <h2>Расписание</h2>
@@ -35,7 +35,7 @@
     .all{
         height: auto;
         background: indianred;
-        width:1150px;
+        width:auto;
     }
     .text{font-size:22px;}
     .text-shadow-1 {

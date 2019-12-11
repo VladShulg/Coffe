@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CoffeXO.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace CoffeXO.Models
+namespace CoffeXO.Contexts
 {
     public class EventContext : DbContext
     {
@@ -8,7 +9,8 @@ namespace CoffeXO.Models
         public EventContext(DbContextOptions<EventContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
         }
+
+        public DbSet<Admin> Admin { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Влад\\source\\repos\\CoffeXO\\CoffeXO\\CoffeXO.csproj": {}
+    "C:\\Users\\Влад\\Source\\Repos\\Coffe\\CoffeXO\\CoffeXO\\CoffeXO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Влад\\source\\repos\\CoffeXO\\CoffeXO\\CoffeXO.csproj": {
+    "C:\\Users\\Влад\\Source\\Repos\\Coffe\\CoffeXO\\CoffeXO\\CoffeXO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Влад\\source\\repos\\CoffeXO\\CoffeXO\\CoffeXO.csproj",
+        "projectUniqueName": "C:\\Users\\Влад\\Source\\Repos\\Coffe\\CoffeXO\\CoffeXO\\CoffeXO.csproj",
         "projectName": "CoffeXO",
-        "projectPath": "C:\\Users\\Влад\\source\\repos\\CoffeXO\\CoffeXO\\CoffeXO.csproj",
+        "projectPath": "C:\\Users\\Влад\\Source\\Repos\\Coffe\\CoffeXO\\CoffeXO\\CoffeXO.csproj",
         "packagesPath": "C:\\Users\\Влад\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Влад\\source\\repos\\CoffeXO\\CoffeXO\\obj\\",
+        "outputPath": "C:\\Users\\Влад\\Source\\Repos\\Coffe\\CoffeXO\\CoffeXO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

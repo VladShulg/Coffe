@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoffeXO.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using CoffeXO.Contexts;
 
 namespace CoffeXO.Controllers
 {
@@ -96,9 +97,10 @@ namespace CoffeXO.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Index()
         {
-            return View();
+            return Content(User.Identity.Name);
         }
 
         public IActionResult Privacy()

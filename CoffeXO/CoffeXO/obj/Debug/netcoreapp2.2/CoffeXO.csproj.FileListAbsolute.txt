@@ -80,3 +80,4 @@ C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Cof
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\CoffeXO.csproj.CopyComplete
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Shared\DefaultLayout.cshtml.g.cs

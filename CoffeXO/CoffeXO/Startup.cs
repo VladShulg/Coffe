@@ -25,16 +25,10 @@ namespace CoffeXO
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<EventContext>(options =>
-            options.UseSqlServer(connection));
+            services.AddDbContext<EventContext>(options => options.UseSqlServer(connection));
             services.AddMvc();
 
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
+            
 
            // установка конфигурации подключения
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -43,7 +37,12 @@ namespace CoffeXO
                     options.LoginPath = new PathString("/Account/Login");
                 });
 
-
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -65,6 +64,8 @@ namespace CoffeXO
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

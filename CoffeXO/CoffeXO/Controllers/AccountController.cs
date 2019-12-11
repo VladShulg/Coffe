@@ -27,6 +27,7 @@ namespace CoffeXO.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel model)
         {
+            var curUser = User;
             //проверка модели на валидность
             if (ModelState.IsValid)
             {

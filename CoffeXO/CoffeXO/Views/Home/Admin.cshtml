@@ -10,12 +10,14 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </head>
 <h1 class="text-shadow-1">Админ-панель</h1>
+<button class="btn btn-warning" onclick="window.location.assign('/Account/LogOut')">Выйти</button>
+<h3 class="text-shadow-1">Настройки мероприятий</h3>
 <table class="table" style="width:auto">
     <tr class="table-danger">
         <th>Название мероприятия</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
     </tr>
 
     @foreach (var ev in Model)
@@ -28,8 +30,10 @@
         </tr>
      }
 </table>
-    <a href="/Home/AddEvent" class="add"></a>
-    <button style="margin-top: 30px;" class="btn btn-success" onclick="window.location.assign('/Home/AddEvent')" >&#43; Добавить мероприятие</button>
+
+<button style="margin-top: 30px;" class="btn btn-success" onclick="window.location.assign('/Home/AddEvent')" >&#43; Добавить мероприятие</button>
+
+
 <script>
     function Delete(id) {
         var data = {
@@ -50,6 +54,8 @@
             }
         });
     }
+
+    
 </script>
 <style>
     .buttons {

@@ -48,6 +48,8 @@ namespace CoffeXO.Controllers
             await db.SaveChangesAsync();
             return true;
         }
+
+        [Authorize]
         public async Task<IActionResult> EditEvent(string id)
         {
             return View(await db.Events.FirstOrDefaultAsync(x => x.Id == id));
@@ -62,25 +64,24 @@ namespace CoffeXO.Controllers
             return true;
         }
 
+        [Authorize]
         public IActionResult AddEvent()
         {
             return View();
         }
 
+        [Authorize]
         public async Task<IActionResult> Admin()
         {
             return View(await db.Events.ToListAsync());
         }
-        public IActionResult LogInAsAdmin()
-        {
-            AdminData admin = new AdminData { Email = "coffexo@gmail.com", Password = "rootpasswordcoffe" };
-            
-            return View(admin);
-        }
+        
         public IActionResult Contacts()
         {
             return View();
         }
+
+        
         public async Task<IActionResult> Event(string id)
         {
 

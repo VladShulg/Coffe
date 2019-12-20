@@ -18,6 +18,13 @@ namespace CoffeXO.Controllers
         {
             db = context;
         }
+
+        [HttpGet]
+        public IActionResult LogInAsAdmin()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Login()
         {
@@ -25,9 +32,14 @@ namespace CoffeXO.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginModel model)
+        public async Task<IActionResult> LoginAsAdmin(LoginModel model)
         {
             var curUser = User;
+
+            if (curUser.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Admin", "Home");
+            }
             //проверка модели на валидность
             if (ModelState.IsValid)
             {
@@ -38,7 +50,7 @@ namespace CoffeXO.Controllers
                 {
                     await Authenticate(model.Email); // аутентификация
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Admin", "Home");
                 }
                 //если пользователь не найден, то в состояние модели добавляется ошибка
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
@@ -69,7 +81,7 @@ namespace CoffeXO.Controllers
                     return RedirectToAction("Index", "Home");
                 }
                 else
-                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+                    ModelState.AddModelError("", "Пользователь уже зарегестрирован");
             }
             return View(model);
         }
@@ -90,7 +102,7 @@ namespace CoffeXO.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Main", "Home");
         }
     }
 }

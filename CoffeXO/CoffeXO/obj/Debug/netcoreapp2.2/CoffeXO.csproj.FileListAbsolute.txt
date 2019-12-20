@@ -63,7 +63,6 @@ C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Raz
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\Event.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\Events.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\LogInAsAdmin.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\Main.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.cshtml.g.cs
@@ -81,3 +80,4 @@ C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Cof
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Shared\DefaultLayout.cshtml.g.cs
+C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\LogInAsAdmin.cshtml.g.cs

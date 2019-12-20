@@ -34,7 +34,7 @@ namespace CoffeXO
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {
-                    options.LoginPath = new PathString("/Account/Login");
+                    options.LoginPath = new PathString("/Account/LogInAsAdmin");
                 });
 
             services.Configure<CookiePolicyOptions>(options =>

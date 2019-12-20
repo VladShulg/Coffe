@@ -1,0 +1,54 @@
+﻿
+@model CoffeXO.ViewModels.LoginModel
+@{
+    ViewData["Title"] = "Авторизация";
+}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<div class="all">
+    <h2 class="text-shadow-1" style="text-align:center;">Авторизация для администрации</h2>
+
+    <form asp-action="LogInAsAdmin" asp-controller="Account" asp-anti-forgery="true">
+        @Html.ValidationSummary()
+        <div>
+            <div class="form-group">
+                <label asp-for="Email">Введите Email</label>
+                <input type="text" asp-for="Email" class="form-control" placeholder="Логин" />
+                <span asp-validation-for="Email" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Пароль</label>
+                <input asp-for="Password" class="form-control" placeholder="Пароль" />
+                <span asp-validation-for="Password" />
+            </div>
+            <div style="text-align:center;" class="form-group">
+                <button class="btn btn-success" style="margin-top:20px;width:100px">Войти</button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+
+
+<style>
+    .all {
+        height: 305px;
+        background: indianred;
+        width: auto;
+        margin: 0 auto 0;
+    }
+
+    .text-shadow-1 {
+        background: indianred;
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+</style>

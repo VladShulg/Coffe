@@ -47,7 +47,6 @@
 
 
 <button onclick="Save()" style="margin-top:30px;" class="btn btn-success">&#128449;Сохранить</button>
-<script src="~/css/site.css"></script>
 <script>
     function Save() {
         var eventName = document.getElementById("name").value;
@@ -71,15 +70,12 @@
             data: data,
             //contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function () { alert("Мероприятие добавлено"); window.location.assign("/Home/Admin")},
+            success: function () { alert("Мероприятие добавлено"); window.location.assign("/Home/Admin") },
             failure: function() {
                 alert("Не удалось добавить мероприятие");
             }
         });
 
-        function SuccessAlert() {
-            document.body.innerHTML = '<div class="alert alert-success"><strong>Success!</strong> Indicates a successful or positive action.</div>';
-        }
     }
 </script>
 <style>

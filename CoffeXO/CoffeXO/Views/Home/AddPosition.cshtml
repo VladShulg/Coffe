@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "Добавить позицию";
+}
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+<h1 class="text-shadow-1">Добавить слайд</h1>
+<table class="table">
+    <tr class="table-danger">
+        <th>Позиция</th>
+        <th>Заполнить</th>
+    </tr>
+    <tr class="table-warning">
+        <td>Имя</td>
+        <td><input id="name-dish" class="form-control" placeholder="Название блюда" /></td>
+    </tr>
+    <tr class="table-warning">
+        <td>Цена</td>
+        <td><input id="price-dish" class="form-control" placeholder="Укажите цену" /></td>
+    </tr>
+</table>
+
+<p>Скидка есть?</p>
+<button></button>
+<button id="add-slide-btn" class="btn btn-danger" onclick="torf=false">НЕТ</button>
+<div id="percent-input">
+    <input id='percent-dish' class="form-control" placeholder="Заполнять только в случае если скидка присутствует" />
+</div>
+
+
+
+
+<button id="add-slide-btn" style="margin-top:30px;" class="btn btn-success" onclick="Save()">&#128449;Сохранить</button>
+
+<script>
+    var torf;
+    
+    function Save() {
+        console.log(torf);
+        var nameDish = document.getElementById("name-dish").value;
+        var priceDish = document.getElementById("price-dish").value;
+        var percentDish = document.getElementById("percent-dish").value;
+        var saleDish = torf;
+        var data = {
+            Name: nameDish,
+            Price: priceDish,
+            Percent: percentDish,
+            Sale: saleDish
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/AddPositionApi",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: data,
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () { alert("Позиция добавлена"); window.location.assign("/Home/Admin") },
+            failure: function () {
+                alert("Не удалось добавить позицию");
+            }
+        });
+    }
+
+    function AddInput() {
+        document.getElementById("percent-input").innerHTML("<input id='percent-dish' class='form-control' placeholder='Я проверочный' />");
+    }
+</script>
+
+<style>
+    .text-shadow-1 {
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+
+    .text {
+        color: palegoldenrod;
+    }
+</style>
+

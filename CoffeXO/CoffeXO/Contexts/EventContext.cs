@@ -12,5 +12,10 @@ namespace CoffeXO.Contexts
         }
 
         public DbSet<Admin> Admin { get; set; }
+
+        public DbSet<Photo> Photos { get; set; }
+
+        public DbSet<Dish> Dishes { get; set; }
     }
+        
 }

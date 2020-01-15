@@ -33,6 +33,24 @@ namespace CoffeXO.Migrations
                     b.ToTable("Admin");
                 });
 
+            modelBuilder.Entity("CoffeXO.Models.Dish", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Percent");
+
+                    b.Property<string>("Price");
+
+                    b.Property<bool>("Sale");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Dishes");
+                });
+
             modelBuilder.Entity("CoffeXO.Models.Event", b =>
                 {
                     b.Property<string>("Id")
@@ -51,6 +69,20 @@ namespace CoffeXO.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("CoffeXO.Models.Photo", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("ImgSrc");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Photos");
                 });
 #pragma warning restore 612, 618
         }

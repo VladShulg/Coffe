@@ -1,4 +1,4 @@
-﻿@model  List<Event>
+﻿@model CoffeXO.Controllers.MyListsForAdmin
 @{
     ViewData["Title"] = "Кабинет администратора";
 }
@@ -8,6 +8,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </head>
 <h1 class="text-shadow-1">Админ-панель</h1>
 <button class="btn btn-warning" onclick="window.location.assign('/Account/LogOut')">Выйти</button>
@@ -20,22 +24,73 @@
         <th> </th>
     </tr>
 
-    @foreach (var ev in Model)
+    @foreach (var ev in Model.Events)
     {
         <tr class="table-warning">
             <td>@ev.Name</td>
-            <td><button class="btn btn-outline-warning" onclick="window.location.assign('/Home/EditEvent?id=@ev.Id')" >Редактировать</button></td>
-            <td><button class="btn btn-outline-danger" onclick="Delete(`@ev.Id`)">Удалить</button></td>
-            <td><button class="btn btn-outline-info" onclick="window.location.assign('/Home/Event?id=@ev.Id')" >Подробная информация</button></td>
+            <td><button class="btn btn-outline-warning" onclick="window.location.assign('/Home/EditEvent?id=@ev.Id')">Редактировать</button></td>
+            <td><button class="btn btn-outline-danger" onclick="DeleteEvent(`@ev.Id`)">Удалить</button></td>
+            <td><button class="btn btn-outline-info" onclick="window.location.assign('/Home/Event?id=@ev.Id')">Подробная информация</button></td>
         </tr>
-     }
+    }
 </table>
 
-<button style="margin-top: 30px;" class="btn btn-success" onclick="window.location.assign('/Home/AddEvent')" >&#43; Добавить мероприятие</button>
+<button style="margin-top: 30px;" class="btn btn-success" onclick="window.location.assign('/Home/AddEvent')">&#43; Добавить мероприятие</button>
 
+<h3 class="text-shadow-1">Настройки карусели фотографий</h3>
+
+<table class="table" style="width:auto">
+    <tr class="table-danger">
+        <th>Название слайда</th>
+        <th> </th>
+        <th> </th>
+    </tr>
+    @foreach (var ph in Model.Photos)
+    {
+        <tr class="table-warning">
+            <td>@ph.Name</td>
+            <td><button class="btn btn-outline-warning" onclick="window.location.assign('/Home/EditSlide?id=@ph.Id')">Редактировать</button></td>
+            <td><button class="btn btn-outline-danger" onclick="DeletePhoto(`@ph.Id`)">Удалить</button></td>
+        </tr>
+    }
+</table>
+
+<button style="margin-top: 30px;" class="btn btn-success" onclick="window.location.assign('/Home/AddSlide')">&#43; Добавить слайд</button>
+
+<h3 class="text-shadow-1">Настройки меню</h3>
+<table class="table" style="width:auto">
+
+    <tr class="table-danger">
+        <th>Наименование позиции</th>
+        <th>Цена</th>
+        <th>Скидка</th>
+        <th> </th>
+        <th> </th>
+    </tr>
+    @foreach (var d in Model.Dishes)
+    {
+        <tr class="table-warning">
+            <td>@d.Name</td>
+            <td>@d.Price</td>
+            @if (d.Sale == true)
+            {
+                <td>@d.Percent</td>
+            }
+            else
+            {
+                <td>Скидка не установлена</td>
+            }
+            <td><button class="btn btn-outline-warning" onclick="window.location.assign('/Home/EditDish?id=@d.Id')">Редактировать</button></td>
+            <td><button class="btn btn-outline-danger" onclick="DeletePosition(`@d.Id`)">Удалить</button></td>
+        </tr>
+    }
+
+</table>
+
+<button style="margin-top: 30px;" class="btn btn-success" onclick="window.location.assign('/Home/AddPosition')">&#43; Добавить позицию</button>
 
 <script>
-    function Delete(id) {
+    function DeleteEvent(id) {
         var data = {
             Id: id
         };
@@ -48,34 +103,72 @@
             data: data,
             //contentType: "application/json; charset=utf-8",
             dataType: "json",
-            success: function () { alert("Мероприятие удалено"); location.reload();},
+            success: function () { alert("Мероприятие удалено"); location.reload(); },
             failure: function () {
                 alert("Не удалось удалить мероприятие");
             }
         });
     }
 
-    
+    function DeletePhoto(id) {
+        var data = {
+            Id: id
+        };
+        console.log("зашел");
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/DeleteSlideApi",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: data,
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () { alert("Слайд удален"); location.reload(); },
+            failure: function () {
+                alert("Не удалось удалить слайд");
+            }
+        });
+    }
+
+    function DeletePosition(id) {
+        var data = {
+            Id: id
+        };
+        
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/DeletePositionApi",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: data,
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () { alert("Позиция удалена"); location.reload(); },
+            failure: function () {
+                alert("Не удалось удалить позицию");
+            }
+        });
+    }
 </script>
 <style>
     .buttons {
-  width: 105px;
-  height: 32px;
-  text-decoration: none;
-  padding-top: 9px;
-  color: green;
-  text-align: center;
-  line-height: 20px;
-  display: block;
-  margin: 20px auto;
-  font: normal 14px arial;
-}
-.text-shadow-1 {
-            color: wheat;
-            text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
-            letter-spacing: 0.1em;
-        }
+        width: 105px;
+        height: 32px;
+        text-decoration: none;
+        padding-top: 9px;
+        color: green;
+        text-align: center;
+        line-height: 20px;
+        display: block;
+        margin: 20px auto;
+        font: normal 14px arial;
+    }
 
+    .text-shadow-1 {
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
 </style>
 
 

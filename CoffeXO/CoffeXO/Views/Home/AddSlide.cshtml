@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Добавить слайд";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<h1 class="text-shadow-1">Добавить слайд</h1>
+<h1 class="text">Основное:</h1>
+<table class="table">
+    <tr class="table-danger">
+        <th>Позиция</th>
+        <th>Заполнить</th>
+    </tr>
+    <tr class="table-warning">
+        <td>Имя</td>
+        <td><input id="name" class="form-control" placeholder="Название слайда"/></td>
+    </tr>
+    <tr class="table-warning">
+        <td>Адрес изображения</td>
+        <td><input id="imgsrc" class="form-control" /></td>
+    </tr>
+</table>
+
+<button id="add-slide-btn" style="margin-top:30px;" class="btn btn-success">&#128449;Сохранить</button>
+<script src="~/src/Home/AddSlide/AddSlide.js"></script>
+<style>
+    .text-shadow-1 {
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+
+    .text {
+        color: palegoldenrod;
+    }
+</style>
+

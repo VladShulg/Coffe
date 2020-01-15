@@ -81,3 +81,7 @@ C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Raz
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Shared\DefaultLayout.cshtml.g.cs
 C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Account\LogInAsAdmin.cshtml.g.cs
+C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\EditSlide.cshtml.g.cs
+C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\AddSlide.cshtml.g.cs
+C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\AddPosition.cshtml.g.cs
+C:\Users\Влад\Source\Repos\Coffe\CoffeXO\CoffeXO\obj\Debug\netcoreapp2.2\Razor\Views\Home\EditDish.cshtml.g.cs

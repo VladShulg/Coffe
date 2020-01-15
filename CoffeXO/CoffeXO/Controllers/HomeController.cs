@@ -6,6 +6,7 @@ using CoffeXO.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using CoffeXO.Contexts;
+using System.Collections.Generic;
 
 namespace CoffeXO.Controllers
 {
@@ -16,6 +17,108 @@ namespace CoffeXO.Controllers
         public HomeController(EventContext context)
         {
             db = context;
+        }
+
+
+        [HttpPost]
+        public async Task<bool> EditDishApi([FromForm]Dish ph)
+        {
+            var req = Request;
+
+            var ph2 = await db.Dishes.FirstOrDefaultAsync(x => x.Id == ph.Id);
+            if (ph2 == null)
+            {
+                return false;
+            }
+            ph2.Name = ph.Name;
+            ph2.Percent = ph.Percent;
+            ph2.Price = ph.Price;
+            ph2.Sale = ph.Sale;
+            await db.SaveChangesAsync();
+            return true;
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditDish(string id)
+        {
+            return View(await db.Dishes.FirstOrDefaultAsync(x => x.Id == id));
+        }
+
+
+        [HttpPost]
+        public async Task<bool> DeletePositionApi([FromForm]Dish d)
+        {
+            if (d == null)
+            {
+                return false;
+            }
+            db.Dishes.Remove(await db.Dishes.FirstOrDefaultAsync(x => x.Id == d.Id));
+            await db.SaveChangesAsync();
+            return true;
+        }
+
+        [HttpPost]
+        public async Task<bool> AddPositionApi([FromForm]Dish d)
+        {
+            d.Id = Guid.NewGuid().ToString();
+            db.Dishes.Add(d);
+            await db.SaveChangesAsync();
+            return true;
+        }
+
+        [Authorize]
+        public IActionResult AddPosition()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<bool> AddSlideApi([FromForm]Photo ph)
+        {
+            ph.Id = Guid.NewGuid().ToString();
+            db.Photos.Add(ph);
+            await db.SaveChangesAsync();
+            return true;
+        }
+
+        [Authorize]
+        public IActionResult AddSlide()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<bool> EditSlideApi([FromForm]Photo ph)
+        {
+            var req = Request;
+
+            var ph2 = await db.Photos.FirstOrDefaultAsync(x => x.Id == ph.Id);
+            if (ph2 == null)
+            {
+                return false;
+            }
+            ph2.Name = ph.Name;
+            ph2.ImgSrc = ph.ImgSrc;
+            await db.SaveChangesAsync();
+            return true;
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditSlide(string id)
+        {
+            return View(await db.Photos.FirstOrDefaultAsync(x => x.Id == id));
+        }
+
+        [HttpPost]
+        public async Task<bool> DeleteSlideApi([FromForm]Photo ph)
+        {
+            if (ph == null)
+            {
+                return false;
+            }
+            db.Photos.Remove(await db.Photos.FirstOrDefaultAsync(x => x.Id == ph.Id));
+            await db.SaveChangesAsync();
+            return true;
         }
 
         [HttpPost]
@@ -73,7 +176,15 @@ namespace CoffeXO.Controllers
         [Authorize]
         public async Task<IActionResult> Admin()
         {
-            return View(await db.Events.ToListAsync());
+            var lists = new MyListsForAdmin
+            {
+                Events = await db.Events.ToListAsync(),
+                Photos = await db.Photos.ToListAsync(),
+                Dishes = await db.Dishes.ToListAsync()
+            };
+
+
+            return View(lists);
         }
         
         public IActionResult Contacts()
@@ -93,9 +204,14 @@ namespace CoffeXO.Controllers
             return View(await db.Events.ToListAsync());
         }
 
-        public IActionResult Main()
+        public async Task<IActionResult> Main()
         {
-            return View();
+            var allLists = new MyListsForMain
+            {
+                Photos = await db.Photos.ToListAsync(),
+                Dishes = await db.Dishes.ToListAsync()
+            };
+            return View(allLists);
         }
 
         [Authorize]
@@ -114,5 +230,18 @@ namespace CoffeXO.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    }
+
+    public class MyListsForAdmin
+    {
+        public List<Event> Events { get; set; }
+        public List<Photo> Photos { get; set; }
+        public List<Dish> Dishes { get; set; }
+    }
+
+    public class MyListsForMain
+    {
+        public List<Photo> Photos { get; set; }
+        public List<Dish> Dishes { get; set; }
     }
 }

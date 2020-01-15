@@ -1,0 +1,64 @@
+﻿@model Photo
+@{
+    ViewData["Title"] = "Редактирование слайда";
+}
+
+<h1 class="text-shadow-1">Редактировать слайд</h1>
+
+<table class="table">
+    <tr class="table-danger">
+        <th>Позиция</th>
+        <th>Заполнить</th>
+    </tr>
+    <tr class="table-warning">
+        <td>Имя</td>
+        <td><input id="name" value="@Model.Name" /></td>
+    </tr>
+    <tr class="table-warning">
+        <td>Адрес изображения</td>
+        <td><input id="imgsrc" value="@Model.ImgSrc" /></td>
+    </tr>
+</table>
+
+
+
+<button onclick="Save()" style="margin-top:30px" class="btn btn-success">&#128449;Сохранить</button>
+<script>
+    function Save() {
+        var eventName = document.getElementById("name").value;
+        var eventImgSrc = document.getElementById("imgsrc").value;
+        var data = {
+            Id: "@Model.Id",
+            Name: eventName,
+            ImgSrc: eventImgSrc
+        };
+        console.log(data);
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/EditSlideApi",
+            // The key needs to match your method's input parameter (case-sensitive).
+            data: data,
+            //contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function () { alert("Слайд отредактирован"); window.location.assign("/Home/Admin")},
+            failure: function() {
+                alert("Не удалось отредактировать слайд");
+            }
+        });
+    }
+</script>
+<style>
+
+    .text-shadow-1 {
+        background: powderblue;
+        color: wheat;
+        text-shadow: -2px -2px 0 #4D4644, 2px -2px 0 #4D4644, -2px 2px 0 #4D4644, 2px 2px 0 #4D4644, 4px 4px 0 white, 5px 5px 0 white, 6px 6px 0 white;
+        letter-spacing: 0.1em;
+    }
+
+    .text {
+        color: palegoldenrod;
+    }
+</style>
+
